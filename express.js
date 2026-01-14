@@ -8,11 +8,11 @@ app.use(function(req,res,next){
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send('Hello World aditya');
 })
 
 app.get("/pissu", (req, res) => {
-  res.send('Hello Pissu');
+  res.send('Hello Pissu aditya');
 })
 
 app.get('/pissu/:username', (req, res) => {
