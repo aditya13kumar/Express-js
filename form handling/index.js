@@ -21,6 +21,15 @@ app.set('view engine','ejs');
 app.get("/",(req,res)=>{
     res.render("index");
 })
+app.get('/profile',(req,res)=>{
+    res.send('welcome to profile!!')
+})
+
+app.get("/profile/:username/:age",(req,res)=>{
+    res.send(`hello ${req.params.username} ${req.params.age}`);
+})
+
+
 
 
 app.listen(4000,()=>{
