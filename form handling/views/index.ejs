@@ -5,11 +5,39 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link href="/src/style.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    
-    <h1 class="">hello aditya!! <%= 2+2%></h1>
+    <div class="main w-full min-h-screen bg-zinc-900">
+        <div class="form p-10 text-white">
+            <form action="/create" method="post">
+                <input class="block w-full rounded-2xl px-5 py-2 bg-zinc-500" type="text" placeholder="enter your" name='title'>
+
+                <textarea class="block w-full rounded-2xl mt-2 px-5 py-10 bg-zinc-500 resize-none" placeholder="write your task details"name='details'></textarea>
+
+                <input class="mt-2 bg-blue-600 px-5 py-2 rounded content-center item-center" type="submit" value="Create task">
+            </form>
+
+        </div>
+        <div class="tasks  flex gap-3 flex-wrap p-10">
+            <% if(files.length > 0 ){ %>
+                <% files.forEach(function(val){ %>
+                    <div class="tasks min-w-72 px-3 py-4 rounded   bg-zinc-800 text-white">
+                     <h1 class="text-3xl tracking-tighter bg-zinc-900 px-1 py-1 rounded"><%= val %></h1>
+                     <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum veritatis vel quasi, 
+                     corrupti ipsum odio laudantium assumenda saepe?
+                     Deserunt culpa exercitationem modi sequi alias facere nulla illo consequatur. Quasi, ipsum?
+                     </p> -->
+                     <a class="text-blue-600" href="/files/<%= val %>">Read more.</a>
+                    </div>
+                <% }) %>
+            <% }else { %>
+                <h2 class=" h-fit w-fit px-1 py-1 rounded bg-red-600 ">Not Task Yet!!</h2>
+            <% } %>
+           
+           
+        </div>
+    </div>
     <script src="/javascripts/script.js"></script>
 </body>
 </html>
