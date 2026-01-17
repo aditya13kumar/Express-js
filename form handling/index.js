@@ -32,6 +32,19 @@ app.get("/files/:filename",async(req,res)=>{
         {filename:req.params.filename,
         filedata:filedata})
 })
+
+app.get("/edit/:filename",async(req,res)=>{
+   res.render('edit',{filename:req.params.filename});
+})
+
+app.post("/edit",async(req,res)=>{
+   await fs.rename(`./files/${req.body.privious}`,`./files/${req.body.newname}`);
+   res.redirect("/");
+   //console.log(req.body.newname);
+})
+
+
+
 app.post("/create",async function(req,res){
     await fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt` ,req.body.details);
     //res.render(createfile);
